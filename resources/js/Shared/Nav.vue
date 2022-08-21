@@ -13,7 +13,6 @@
         </ul>
     </nav>
 </template>
-
 <script>
 import NavLink from './NavLink'
 export default {
