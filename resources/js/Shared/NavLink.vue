@@ -8,11 +8,8 @@
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3'
 
-export default {
-    components: { Link },
-    
+export default {  
     props: {
         active: Boolean
     }
