@@ -1,9 +1,12 @@
 <template>
-<Head title="Users" />
-        <h1 class="text-3xl">Users</h1>
+        <Head title="Users" />
 
+        <div class="flex justify-between mb-6">
+                <h1 class="text-3xl">Users</h1>
+                <input v-model="search" type="text" placeholder="Search..." class="border px-2 rounded-lg">
+        </div>
 
-<div class="overflow-x-auto relative mt-6">
+<div class="overflow-x-auto relative">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="user in users.data" :key="user.id">
@@ -25,6 +28,20 @@
 
 <script setup>
 import Pagination from "../Shared/Pagination";
+import { ref, watch } from "vue";
+import {Inertia} from "@inertiajs/inertia"
 
-defineProps({  users: Object });
+let props = defineProps({  
+        users: Object,
+        filters: Object 
+});
+
+let search =ref(props.filters.search);
+
+watch(search, value => {
+        Inertia.get('/users', { search: value }, {
+                preserveState: true,
+                replace: true
+        });
+});
 </script>
