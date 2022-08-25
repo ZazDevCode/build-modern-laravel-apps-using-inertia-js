@@ -12,12 +12,15 @@
                                 Name
                         </label>
 
-                        <input v-model="form.name" class="border border-gray-400 p-2 w-full"
+                        <input v-model="form.name" 
+                                class="border border-gray-400 p-2 w-full"
                                 type="text"
                                 name="name"
                                 id="name"
                                 required
                         >
+
+                        <div v-if="$page.props.errors.name" v-text="$page.props.errors.name" class="text-red-500 text-xs mt-1"></div>
                 </div>
 
                 <div class="mb-6">
@@ -33,6 +36,8 @@
                                 id="email"
                                 required
                         >
+
+                        <div v-if="$page.props.errors.email" v-text="$page.props.errors.email" class="text-red-500 text-xs mt-1"></div>
                 </div>
 
                 <div class="mb-6">
@@ -48,6 +53,8 @@
                                 id="password"
                                 required
                         >
+
+                        <div v-if="$page.props.errors.password" v-text="$page.props.errors.password" class="text-red-500 text-xs mt-1"></div>
                 </div>
 
                 <div class="mb-6">
